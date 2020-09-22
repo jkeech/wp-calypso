@@ -50,6 +50,20 @@ const blockInits = new Map()
 	.set( TiledGalleryBlockComponent, ( block ) => block.uploadImages( sampleImages ) )
 	.set( ContactFormBlockComponent, () =>
 		gEditorComponent.insertContactForm( 'testing@automattic.com', "Let's work together" )
+	)
+	.set( ContactInfoBlockComponent, ( block ) =>
+		block.fillUp( {
+			email: 'awesome@possum.ttt',
+			phoneNumber: '555-234-4323',
+			streetAddress: 'E2E street',
+			addressLine2: 'underground bunker 2',
+			addressLine3: '#1111',
+			city: 'GutenPolis',
+			state: 'Gutenfolia',
+			zipCode: '1337',
+			country: 'United Gutenberg States of Calypsoland',
+			linkToGmaps: true,
+		} )
 	);
 
 /**
