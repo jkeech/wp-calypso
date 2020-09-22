@@ -50,7 +50,12 @@ const blockInits = new Map()
 	.set( TiledGalleryBlockComponent, ( block ) => block.uploadImages( sampleImages ) )
 	.set( ContactFormBlockComponent, () =>
 		gEditorComponent.insertContactForm( 'testing@automattic.com', "Let's work together" )
-	);
+	)
+	.set( LayoutGridBlockComponent, async ( block ) => {
+		await block.setupColumns( 2 );
+		await block.insertBlock( RatingStarBlockComponent );
+		await block.insertBlock( DynamicSeparatorBlockComponent );
+	} );
 
 /**
  * Wrapper that provides an uniform API for creating blocks on the page. It uses
