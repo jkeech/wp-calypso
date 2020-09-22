@@ -50,7 +50,8 @@ const blockInits = new Map()
 	.set( TiledGalleryBlockComponent, ( block ) => block.uploadImages( sampleImages ) )
 	.set( ContactFormBlockComponent, () =>
 		gEditorComponent.insertContactForm( 'testing@automattic.com', "Let's work together" )
-	);
+	)
+	.set( DynamicSeparatorBlockComponent, ( block ) => block.resizeBy( 150 ) );
 
 /**
  * Wrapper that provides an uniform API for creating blocks on the page. It uses
