@@ -3,7 +3,7 @@
  */
 import assert from 'assert';
 import config from 'config';
-import { times } from 'lodash';
+import { times, sample } from 'lodash';
 import { By } from 'selenium-webdriver';
 import { join } from 'path';
 import { promises as fs } from 'fs';
@@ -50,7 +50,9 @@ const blockInits = new Map()
 	.set( TiledGalleryBlockComponent, ( block ) => block.uploadImages( sampleImages ) )
 	.set( ContactFormBlockComponent, () =>
 		gEditorComponent.insertContactForm( 'testing@automattic.com', "Let's work together" )
-	);
+	)
+	.set( SlideshowBlockComponent, ( block ) => block.uploadImages( sampleImages ) )
+	.set( GalleryMasonryBlockComponent, ( block ) => block.uploadImages( sampleImages ) );
 
 /**
  * Wrapper that provides an uniform API for creating blocks on the page. It uses
