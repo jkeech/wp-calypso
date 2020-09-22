@@ -50,6 +50,9 @@ const blockInits = new Map()
 	.set( TiledGalleryBlockComponent, ( block ) => block.uploadImages( sampleImages ) )
 	.set( ContactFormBlockComponent, () =>
 		gEditorComponent.insertContactForm( 'testing@automattic.com', "Let's work together" )
+	)
+	.set( YoutubeBlockComponent, ( block ) =>
+		block.embed( 'https://www.youtube.com/watch?v=FhMO5QnRNvo' )
 	);
 
 /**
