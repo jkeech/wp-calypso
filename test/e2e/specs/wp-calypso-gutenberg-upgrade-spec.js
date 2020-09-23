@@ -166,9 +166,9 @@ function verifyBlockInEditor( blockClass, siteName ) {
 	} );
 	*/
 
-	step( 'Take screenshots of the block in the editor', async function () {
+	/*	step( 'Take screenshots of the block in the editor', async function () {
 		await takeEditorScreenshots( siteName );
-	} );
+	} );*/
 }
 
 async function assertNoErrorInEditor() {
@@ -191,9 +191,9 @@ function verifyBlockInPublishedPage( blockClass, siteName ) {
 		await gEditorComponent.publish( { visit: true } );
 	} );
 
-	step( 'Take screenshots of the published page', async function () {
+	/*step( 'Take screenshots of the published page', async function () {
 		await takePublishedScreenshots( siteName );
-	} );
+	} );*/
 
 	step( 'Block is displayed in the published page', async function () {
 		await driverHelper.waitTillPresentAndDisplayed( driver, blockClass.blockFrontendSelector );
