@@ -96,17 +96,13 @@ async function takeScreenshot( siteName, totalHeight, viewportHeight, scrollCb )
 	for ( let i = 0; i <= totalHeight / viewportHeight; i++ ) {
 		await scrollCb( i );
 
-		await driver.takeScreenshot().then( ( data ) => {
-			return driver
-				.getCurrentUrl()
-				.then( ( url ) =>
-					mediaHelper.writeScreenshot(
-						data,
-						() => join( siteName, `${ siteName }-${ i }-${ now }` ),
-						{ url }
-					)
-				);
-		} );
+		const screenshotData = await driver.takeScreenshot();
+		const url = await driver.getCurrentUrl();
+		await mediaHelper.writeScreenshot(
+			screenshotData,
+			() => join( siteName, `${ siteName }-${ i }-${ now }` ),
+			{ url }
+		);
 	}
 }
 
@@ -168,9 +164,9 @@ function verifyBlockInEditor( blockClass, siteName ) {
 	} );
 	*/
 
-	/*	step( 'Take screenshots of the block in the editor', async function () {
+	step( 'Take screenshots of the block in the editor', async function () {
 		await takeEditorScreenshots( siteName );
-	} );*/
+	} );
 }
 
 async function assertNoErrorInEditor() {
@@ -193,9 +189,9 @@ function verifyBlockInPublishedPage( blockClass, siteName ) {
 		await gEditorComponent.publish( { visit: true } );
 	} );
 
-	/*step( 'Take screenshots of the published page', async function () {
+	step( 'Take screenshots of the published page', async function () {
 		await takePublishedScreenshots( siteName );
-	} );*/
+	} );
 
 	/**
 	 * This is a temporary hack for this changeset to skip checking some blocks in the frontend until
